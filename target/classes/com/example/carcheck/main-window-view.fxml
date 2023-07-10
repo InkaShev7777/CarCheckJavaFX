@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,16 +10,25 @@
    <children>
       <AnchorPane layoutY="50.0" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Button fx:id="search_for_number" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="274.0" text="Search for number">
+            <ImageView fx:id="search_for_vin" fitHeight="150.0" fitWidth="275.0" layoutX="13.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/vin.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="search_for_number" fitHeight="150.0" fitWidth="275.0" layoutX="13.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/number.jpeg" />
+               </image></ImageView>
+            <Label layoutX="83.0" layoutY="157.0" text="Check for VIN" textAlignment="CENTER" textFill="#fffefe">
                <font>
-                  <Font size="16.0" />
+                  <Font size="23.0" />
                </font>
-            </Button>
-            <Button fx:id="search_for_vin" layoutX="13.0" layoutY="206.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="274.0" text="Search for VIN">
+            </Label>
+            <Label layoutX="64.0" layoutY="350.0" text="Check for number" textAlignment="CENTER">
                <font>
-                  <Font size="16.0" />
+                  <Font size="23.0" />
                </font>
-            </Button>
+            </Label>
          </children>
       </AnchorPane>
       <Label layoutX="14.0" layoutY="14.0" text="CarCheck">
