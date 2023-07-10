@@ -1,5 +1,6 @@
 package com.example.carcheck;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,7 +9,11 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class AuthorizeController {
 
@@ -34,12 +39,12 @@ public class AuthorizeController {
     void initialize() {
        ConfirmButton.setOnAction(actionEvent -> {
            if(LoginField.getText().length() > 0 && PasswordField.getText().length() > 0){
-               System.out.println("Ok");
+               //
+               // check from DB
+               //
+
            }
            else {
-               //
-               // add window with alert
-               //
                Alert alert = new Alert(Alert.AlertType.ERROR);
                alert.setTitle("Error");
                alert.setHeaderText(null);
