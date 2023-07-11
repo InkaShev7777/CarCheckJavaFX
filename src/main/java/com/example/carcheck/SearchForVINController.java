@@ -2,6 +2,8 @@ package com.example.carcheck;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.example.carcheck.API.APIController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -36,6 +38,8 @@ public class SearchForVINController {
         });
         searchButton.setOnMouseClicked(mouseEvent -> {
             this.text.setText("Rot twoy imel!");
+            APIController api = new APIController();
+            api.searchByNumber("AE6926XE");
         });
     }
 
