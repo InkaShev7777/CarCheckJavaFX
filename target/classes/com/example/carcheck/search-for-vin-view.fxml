@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFC300;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carcheck.SearchForVINController">
+    <children>
+        <Label fx:id="buttonBack" layoutX="14.0" layoutY="14.0" text="&lt; Back">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <AnchorPane layoutY="41.0" prefHeight="459.0" prefWidth="300.0" style="-fx-background-color: #2C3E50;">
+            <children>
+                <ImageView fx:id="searchButton" fitHeight="34.0" fitWidth="34.0" layoutX="252.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                    <image>
+                        <Image url="file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/search.png" />
+                    </image>
+                </ImageView>
+                <TextField focusTraversable="false" layoutX="14.0" layoutY="411.0" prefHeight="26.0" prefWidth="231.0" promptText="5YJXCBE2XHF043074" style="-fx-background-color: #D5D8DC;" />
+            <Text fx:id="text" layoutX="27.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="121.0" layoutY="6.0" text="Search">
+            <font>
+                <Font name="Al Nile" size="18.0" />
+            </font>
+        </Label>
+      <ImageView fx:id="saveButton" fitHeight="26.0" fitWidth="28.0" layoutX="260.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/star.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

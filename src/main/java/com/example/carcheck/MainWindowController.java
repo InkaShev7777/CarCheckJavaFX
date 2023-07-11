@@ -51,9 +51,40 @@ public class MainWindowController {
 
         search_for_number.setOnMouseClicked(mouseEvent -> {
             System.out.println("Search by number");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/example/carcheck/search-for-number-view.fxml"));
+            try{
+                loader.load();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setTitle("Search");
+            stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
         });
         search_for_vin.setOnMouseClicked(mouseEvent -> {
             System.out.println("Search by VIN");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/example/carcheck/search-for-vin-view.fxml"));
+            try{
+                loader.load();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setTitle("Search");
+            stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
         });
     }
 

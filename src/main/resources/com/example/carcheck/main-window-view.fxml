@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #F7DC6F;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carcheck.MainWindowController">
    <children>
-      <AnchorPane layoutY="50.0" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #fafafa;">
+      <AnchorPane layoutY="50.0" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #D6DBDF;">
          <children>
             <ImageView fx:id="search_for_vin" fitHeight="150.0" fitWidth="275.0" layoutX="13.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
