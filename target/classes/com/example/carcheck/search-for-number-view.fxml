@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFC300;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carcheck.SearchForNumberController">
    <children>
@@ -22,7 +22,39 @@
                   <Image url="file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/search.png" />
                </image>
             </ImageView>
-            <TextField focusTraversable="false" layoutX="14.0" layoutY="411.0" prefHeight="26.0" prefWidth="231.0" promptText="AE 7777 EA" style="-fx-background-color: #D5D8DC;" />
+            <TextField fx:id="number" focusTraversable="false" layoutX="14.0" layoutY="411.0" prefHeight="26.0" prefWidth="231.0" promptText="AE7777EA" style="-fx-background-color: #D5D8DC;" />
+            <AnchorPane layoutX="21.0" layoutY="30.0" prefHeight="366.0" prefWidth="267.0">
+               <children>
+                  <Text fx:id="Marck" fill="#e4e4e4" layoutX="14.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="imageCar" fitHeight="264.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../source/search.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="carYear" fill="#e4e4e4" layoutX="14.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="vin" fill="#e4e4e4" layoutX="14.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="lastReg" fill="#e4e4e4" layoutX="17.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="231.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="saveInDB" fitHeight="40.0" fitWidth="41.0" layoutX="238.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <Label layoutX="121.0" layoutY="6.0" text="Search">
