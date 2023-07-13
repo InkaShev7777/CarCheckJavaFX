@@ -4,6 +4,8 @@ module com.example.carcheck {
     requires json.simple;
     requires java.net.http;
     requires com.google.gson;
+    requires org.hibernate.orm.core;
+    requires java.sql;
 
 
     opens com.example.carcheck to javafx.fxml;

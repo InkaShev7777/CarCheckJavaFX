@@ -2,8 +2,10 @@ package com.example.carcheck;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import com.example.carcheck.DataBase.DBController;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -39,6 +41,19 @@ public class AuthorizeController {
     void initialize() {
        ConfirmButton.setOnAction(actionEvent -> {
            if(LoginField.getText().length() > 0 && PasswordField.getText().length() > 0){
+               try {
+                   DBController controller = new DBController();
+                   if(controller.Authorize(LoginField.getText(),PasswordField.getText())!= -1){
+                       // save id User -> close this window!
+                   }
+                   else {
+                       // Alert error
+                   }
+               } catch (ClassNotFoundException e) {
+                   throw new RuntimeException(e);
+               } catch (SQLException e) {
+                   throw new RuntimeException(e);
+               }
                //
                // check from DB
                //

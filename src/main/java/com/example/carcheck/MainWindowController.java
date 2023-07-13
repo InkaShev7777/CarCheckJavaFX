@@ -50,7 +50,6 @@ public class MainWindowController {
         });
 
         search_for_number.setOnMouseClicked(mouseEvent -> {
-            System.out.println("Search by number");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/com/example/carcheck/search-for-number-view.fxml"));
             try{
@@ -69,7 +68,6 @@ public class MainWindowController {
 
         });
         search_for_vin.setOnMouseClicked(mouseEvent -> {
-            System.out.println("Search by VIN");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/com/example/carcheck/search-for-vin-view.fxml"));
             try{
