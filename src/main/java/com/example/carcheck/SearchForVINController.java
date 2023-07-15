@@ -63,7 +63,7 @@ public class SearchForVINController {
                 APIController api = new APIController();
                 api.searchByVIN(this.VIN.getText().toUpperCase());
                 if(api.getError() != true){
-                    this.Marck.setText(api.getMarck());
+                    this.Marck.setText(api.getMark());
                     this.imageCar.setImage(new Image(api.getURLImage()));
                     this.carYear.setText(api.getYear());
                     this.vin.setText("VIN: " + api.getVIN());

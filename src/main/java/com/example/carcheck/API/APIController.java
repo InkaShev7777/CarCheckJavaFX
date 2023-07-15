@@ -15,7 +15,8 @@ import com.google.gson.Gson;
 
 public class APIController {
     private String URL;
-    private String Marck;
+    private String Mark;
+    private String Model;
     private String URLImage;
     private String VIN;
     private String Year;
@@ -24,7 +25,8 @@ public class APIController {
 
     public APIController(){
         this.URL = "https://baza-gai.com.ua/";
-        this.Marck = "";
+        this.Mark = "";
+        this.Model = "";
         this.URLImage = "";
         this.LastRegistrate = "";
         this.VIN = "";
@@ -51,7 +53,8 @@ public class APIController {
                 this.Error = true;
             }else {
                 this.URLImage = jo.get("photo_url").toString();
-                this.Marck = jo.get("vendor").toString() + " " + jo.get("model").toString();
+                this.Mark = jo.get("vendor").toString();
+                this.Model = jo.get("model").toString();
                 this.Year = jo.get("model_year").toString();
                 this.VIN = jo.get("vin").toString();
                 JSONArray array = (JSONArray) jo.get("operations");
@@ -86,7 +89,8 @@ public class APIController {
                 this.Error = true;
             }else {
                 this.URLImage = jo.get("photo_url").toString();
-                this.Marck = jo.get("vendor").toString() + " " + jo.get("model").toString();
+                this.Mark = jo.get("vendor").toString();
+                this.Model = jo.get("model").toString();
                 this.Year = jo.get("model_year").toString();
                 this.VIN = jo.get("vin").toString();
 
@@ -99,9 +103,12 @@ public class APIController {
             System.out.println(e.getMessage());
         }
     }
-    public String getMarck(){
-        return  this.Marck;
+    public String getMark(){
+        return  this.Mark;
     }
+
+    public String getModel() {return Model;}
+
     public String getURLImage() {
         return URLImage;
     }

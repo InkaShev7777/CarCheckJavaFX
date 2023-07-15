@@ -1,11 +1,13 @@
 package com.example.carcheck;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.carcheck.API.APIController;
+import com.example.carcheck.DataBase.DBController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -54,6 +56,12 @@ public class SearchForNumberController {
     private TextField number;
     @FXML
     private int IDUser;
+    private String urlDB;
+    private String vinDB;
+    private String markDB;
+    private String modelDB;
+    private String lastRegDB;
+    private String yearDB;
 
     @FXML
     void initialize() {
@@ -68,11 +76,18 @@ public class SearchForNumberController {
                 if(number.charAt(0) >= 'A' && number.charAt(1) >= 'A' && number.charAt(6) >= 'A' && number.charAt(7) >= 'A'){
                     api.searchByNumber(number.toUpperCase());
                     if(api.getError() != true){
-                        this.Marck.setText(api.getMarck());
+                        this.Marck.setText(api.getMark() + " " + api.getMark());
+                        this.markDB = api.getMark();
+                        this.modelDB = api.getModel();
                         this.imageCar.setImage(new Image(api.getURLImage()));
+                        this.urlDB = api.getURLImage();
                         this.carYear.setText(api.getYear());
+                        this.yearDB = api.getYear();
+                        this.urlDB = api.getURLImage();
                         this.vin.setText("VIN: " + api.getVIN());
+                        this.vinDB = api.getVIN();
                         this.lastReg.setText("Last registration: " + api.getLastRegistrate());
+                        this.lastRegDB = api.getLastRegistrate();
                         this.saveInDB.setImage(new Image("file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/save.png"));
                     }
                     else {
@@ -96,10 +111,17 @@ public class SearchForNumberController {
             //  send date in DB
             //
             if(this.IDUser != 0){
-                System.out.println("ok");
+                try {
+                    DBController controller = new DBController();
+                    controller.SaveSearchInDB(this.IDUser,this.markDB,this.modelDB,this.yearDB,this.vinDB,this.lastRegDB,this.urlDB);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
             else {
-                System.out.println("alert");
+                //alert
             }
         });
     }

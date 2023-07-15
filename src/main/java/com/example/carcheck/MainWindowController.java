@@ -73,7 +73,6 @@ public class MainWindowController {
                     this.Login = "";
                 }
             }
-
         });
 
         search_for_number.setOnMouseClicked(mouseEvent -> {
