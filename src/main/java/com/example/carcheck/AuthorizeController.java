@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class AuthorizeController {
@@ -50,7 +51,6 @@ public class AuthorizeController {
                        idUser = idNow;
                        Login = LoginField.getText();
                        this.ConfirmButton.getScene().getWindow().hide();
-                       // save id User -> close this window!
                    }
                    else {
                        // Alert error
@@ -75,10 +75,28 @@ public class AuthorizeController {
            }
        });
        SignOutLink.setOnAction(actionEvent -> {
-           System.out.println("Sign Out");
            //
            // open next registration window
            //
+           FXMLLoader loader = new FXMLLoader();
+           loader.setLocation(getClass().getResource("/com/example/carcheck/registration-view.fxml"));
+           try{
+               loader.load();
+           }
+           catch (IOException e){
+               e.printStackTrace();
+           }
+           Parent root = loader.getRoot();
+           Stage stage = new Stage();
+           stage.setTitle("Search");
+           stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
+           stage.setResizable(false);
+           stage.setScene(new Scene(root));
+//           SignOutLink.getScene().getWindow().hide();
+           stage.showAndWait();
+           RegistrationController controller = loader.getController();
+           this.idUser = controller.getIDUser();
+           this.Login = controller.getLogin();
        });
     }
     @FXML

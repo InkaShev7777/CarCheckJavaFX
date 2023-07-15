@@ -38,7 +38,8 @@ public class DBController {
     //
     //  public
     //
-    public int Authorize(String login,String password){
+    public int Authorize(String login,String password) throws SQLException {
+        getAllUser();
         int validIdUser = -1;
         for(User u : this.users){
             if(login.equals(u.getLogin()) && password.equals(u.getPassword())){
@@ -50,6 +51,19 @@ public class DBController {
     public int SaveSearchInDB(int idUser,String mark,String model, String year, String vin, String lastDate, String url) throws SQLException {
         Statement s  = c.createStatement();
         int r = s.executeUpdate("insert into db.SaveCars(id_user, mark, model, year, last_registration, vin, url_photo) values ("+idUser+",'"+ mark+"','"+model+"','"+year+"','"+lastDate+"','"+vin+"','"+url+"')");
+        return r;
+    }
+    public boolean checkNewUser(String login){
+        for(User u : this.users){
+            if(u.getLogin().equals(login)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public int RegistrateUser(String login, String password) throws SQLException {
+        Statement s  = c.createStatement();
+        int r = s.executeUpdate("insert into db.User(login, password, id_role) values('"+login+"','"+password+"',1)");
         return r;
     }
 }

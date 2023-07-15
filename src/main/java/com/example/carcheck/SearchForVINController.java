@@ -68,7 +68,6 @@ public class SearchForVINController {
             stage.close();
         });
         searchButton.setOnMouseClicked(mouseEvent -> {
-            System.out.println(this.VIN.getText());
             if(this.VIN.getText().length() == 17){
                 APIController api = new APIController();
                 api.searchByVIN(this.VIN.getText().toUpperCase());
