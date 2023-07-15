@@ -69,6 +69,7 @@ public class SearchForVINController {
                     this.vin.setText("VIN: " + api.getVIN());
                     this.lastReg.setText("Last registration: " + api.getLastRegistrate());
                     this.saveInDB.setImage(new Image("file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/save.png"));
+
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);

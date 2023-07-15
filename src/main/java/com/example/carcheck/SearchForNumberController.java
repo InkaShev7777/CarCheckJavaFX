@@ -52,6 +52,8 @@ public class SearchForNumberController {
 
     @FXML
     private TextField number;
+    @FXML
+    private int IDUser;
 
     @FXML
     void initialize() {
@@ -93,6 +95,12 @@ public class SearchForNumberController {
             //
             //  send date in DB
             //
+            if(this.IDUser != 0){
+                System.out.println("ok");
+            }
+            else {
+                System.out.println("alert");
+            }
         });
     }
     public void ErrorAlert(){
@@ -101,6 +109,10 @@ public class SearchForNumberController {
         alert.setHeaderText(null);
         alert.setContentText("Something went wrong. The number should look like this: AE7777EA");
         alert.showAndWait();
+    }
+    @FXML
+    public void SetIdUser(int id){
+        this.IDUser = id;
     }
 
 }

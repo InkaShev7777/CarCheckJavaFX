@@ -36,6 +36,8 @@ public class AuthorizeController {
 
     @FXML
     private Hyperlink SignOutLink;
+    private int idUser;
+    private String Login;
 
     @FXML
     void initialize() {
@@ -43,7 +45,11 @@ public class AuthorizeController {
            if(LoginField.getText().length() > 0 && PasswordField.getText().length() > 0){
                try {
                    DBController controller = new DBController();
-                   if(controller.Authorize(LoginField.getText(),PasswordField.getText())!= -1){
+                   int idNow = controller.Authorize(LoginField.getText(),PasswordField.getText());
+                   if(idNow!= -1){
+                       idUser = idNow;
+                       Login = LoginField.getText();
+                       this.ConfirmButton.getScene().getWindow().hide();
                        // save id User -> close this window!
                    }
                    else {
@@ -74,6 +80,14 @@ public class AuthorizeController {
            // open next registration window
            //
        });
+    }
+    @FXML
+    public int getIdUser(){
+        return  this.idUser;
+    }
+    @FXML
+    public String getLogin(){
+        return  this.Login;
     }
 
 }
