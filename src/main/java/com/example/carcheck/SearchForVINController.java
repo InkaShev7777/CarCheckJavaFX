@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.example.carcheck.API.APIController;
 import com.example.carcheck.DataBase.DBController;
+import com.example.carcheck.Models.UserLogin;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -115,10 +116,10 @@ public class SearchForVINController {
             //
             //  Save in DB
             //
-            if(this.IDUser != 0){
+            if(UserLogin.getIdUser() != 0){
                 try {
                     DBController controller = new DBController();
-                    int cod =  controller.SaveSearchInDB(this.IDUser,this.markDB,this.modelDB,this.yearDB,this.vinDB,this.lastRegDB,this.urlDB);
+                    int cod =  controller.SaveSearchInDB(UserLogin.getIdUser(),this.markDB,this.modelDB,this.yearDB,this.vinDB,this.lastRegDB,this.urlDB);
                     if(cod > 0){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Information");
@@ -148,9 +149,9 @@ public class SearchForVINController {
             }
         });
     }
-    @FXML
-    public void SetIdUser(int id){
-        this.IDUser = id;
-    }
+//    @FXML
+//    public void SetIdUser(int id){
+//        this.IDUser = id;
+//    }
 
 }

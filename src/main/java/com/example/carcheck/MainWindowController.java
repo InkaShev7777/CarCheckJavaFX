@@ -39,9 +39,7 @@ public class MainWindowController {
     @FXML
     void initialize() {
         user_button.setOnMouseClicked(mouseEvent -> {
-//            user_button.getScene().getWindow().hide();
-            
-            if(this.idUser == 0){
+            if(UserLogin.getIdUser() == 0){
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/com/example/carcheck/authorize-view.fxml"));
                 try{
@@ -57,23 +55,16 @@ public class MainWindowController {
                 stage.setResizable(false);
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
-
-                //
-                //  id user if authorize is success
-                //
-                AuthorizeController authorizeController = loader.getController();
-                this.idUser = authorizeController.getIdUser();
-                this.Login = authorizeController.getLogin();
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Info");
                 alert.setHeaderText(null);
-                alert.setContentText(this.Login + " you are already logged in!\nDo you wont to log out of your account?");
+                alert.setContentText(UserLogin.getLogin() + " you are already logged in!\nDo you wont to log out of your account?");
                 alert.showAndWait();
                 if(alert.getResult() == ButtonType.OK) {
-                    this.idUser = 0;
-                    this.Login = "";
+                    UserLogin.setIdUser(0);
+                    UserLogin.setLogin("");
                 }
             }
         });
@@ -93,8 +84,6 @@ public class MainWindowController {
             stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
             stage.setResizable(false);
             stage.setScene(new Scene(root));
-            SearchForNumberController searchForNumberController = loader.getController();
-            searchForNumberController.SetIdUser(this.idUser);
             stage.showAndWait();
 
         });
@@ -113,8 +102,6 @@ public class MainWindowController {
             stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
             stage.setResizable(false);
             stage.setScene(new Scene(root));
-            SearchForVINController searchForVINController = loader.getController();
-            searchForVINController.SetIdUser(this.idUser);
             stage.showAndWait();
         });
     }

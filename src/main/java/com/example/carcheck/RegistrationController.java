@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.carcheck.DataBase.DBController;
+import com.example.carcheck.Models.UserLogin;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -45,9 +46,9 @@ public class RegistrationController {
                     if(this.PasswordField.getText().equals(this.ConfirmPassword.getText())){
                         if(controller.checkNewUser(this.LoginField.getText()) == true){
                             if(controller.RegistrateUser(this.LoginField.getText(),this.PasswordField.getText()) > 0){
-                                this.IDUser = controller.Authorize(this.LoginField.getText(),this.PasswordField.getText());
-                                this.Login = this.LoginField.getText();
-                                // ok
+                                UserLogin.setIdUser(controller.Authorize(this.LoginField.getText(),this.PasswordField.getText()));
+                                UserLogin.setLogin(this.LoginField.getText());
+                                this.PasswordField.getScene().getWindow().hide();
                             }
                         }
                         else {
@@ -82,13 +83,13 @@ public class RegistrationController {
             }
         });
     }
-    @FXML
-    public int getIDUser(){
-        return this.IDUser;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
+//    @FXML
+//    public int getIDUser(){
+//        return this.IDUser;
+//    }
+//
+//    public String getLogin() {
+//        return Login;
+//    }
 }
 

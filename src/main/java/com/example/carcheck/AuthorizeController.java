@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.carcheck.DataBase.DBController;
+import com.example.carcheck.Models.UserLogin;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -48,8 +49,10 @@ public class AuthorizeController {
                    DBController controller = new DBController();
                    int idNow = controller.Authorize(LoginField.getText(),PasswordField.getText());
                    if(idNow!= -1){
-                       idUser = idNow;
-                       Login = LoginField.getText();
+                       UserLogin.setIdUser(idNow);
+                       UserLogin.setLogin(LoginField.getText());
+//                       idUser = idNow;
+//                       Login = LoginField.getText();
                        this.ConfirmButton.getScene().getWindow().hide();
                    }
                    else {
@@ -94,21 +97,21 @@ public class AuthorizeController {
            stage.setScene(new Scene(root));
            SignOutLink.getScene().getWindow().hide();
 
-           RegistrationController controller = loader.getController();
-           this.idUser = controller.getIDUser();
-           this.Login = controller.getLogin();
+//           RegistrationController controller = loader.getController();
+//           this.idUser = controller.getIDUser();
+//           this.Login = controller.getLogin();
            stage.show();
 //           stage.showAndWait();
        });
     }
-    @FXML
-    public int getIdUser(){
-        return  this.idUser;
-    }
-    @FXML
-    public String getLogin(){
-        return  this.Login;
-    }
+//    @FXML
+//    public int getIdUser(){
+//        return  this.idUser;
+//    }
+//    @FXML
+//    public String getLogin(){
+//        return  this.Login;
+//    }
 
 }
 
