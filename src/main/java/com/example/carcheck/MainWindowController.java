@@ -3,6 +3,8 @@ package com.example.carcheck;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.example.carcheck.Models.UserLogin;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,6 +40,7 @@ public class MainWindowController {
     void initialize() {
         user_button.setOnMouseClicked(mouseEvent -> {
 //            user_button.getScene().getWindow().hide();
+            
             if(this.idUser == 0){
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/com/example/carcheck/authorize-view.fxml"));

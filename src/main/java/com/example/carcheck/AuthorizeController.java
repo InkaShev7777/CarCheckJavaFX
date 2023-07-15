@@ -92,11 +92,13 @@ public class AuthorizeController {
            stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
            stage.setResizable(false);
            stage.setScene(new Scene(root));
-//           SignOutLink.getScene().getWindow().hide();
-           stage.showAndWait();
+           SignOutLink.getScene().getWindow().hide();
+
            RegistrationController controller = loader.getController();
            this.idUser = controller.getIDUser();
            this.Login = controller.getLogin();
+           stage.show();
+//           stage.showAndWait();
        });
     }
     @FXML

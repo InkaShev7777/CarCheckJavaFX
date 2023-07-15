@@ -60,10 +60,20 @@ public class RegistrationController {
                     }
                     else {
                         // not confirm pass
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText("You entered the wrong password!");
+                        alert.showAndWait();
                     }
                 }
                 else {
                     // field
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Not all fields are filled!");
+                    alert.showAndWait();
                 }
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
