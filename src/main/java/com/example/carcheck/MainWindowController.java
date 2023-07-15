@@ -110,6 +110,8 @@ public class MainWindowController {
             stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
             stage.setResizable(false);
             stage.setScene(new Scene(root));
+            SearchForVINController searchForVINController = loader.getController();
+            searchForVINController.SetIdUser(this.idUser);
             stage.showAndWait();
         });
     }

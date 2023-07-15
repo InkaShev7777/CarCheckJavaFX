@@ -54,7 +54,6 @@ public class SearchForNumberController {
 
     @FXML
     private TextField number;
-    @FXML
     private int IDUser;
     private String urlDB;
     private String vinDB;
@@ -76,18 +75,25 @@ public class SearchForNumberController {
                 if(number.charAt(0) >= 'A' && number.charAt(1) >= 'A' && number.charAt(6) >= 'A' && number.charAt(7) >= 'A'){
                     api.searchByNumber(number.toUpperCase());
                     if(api.getError() != true){
-                        this.Marck.setText(api.getMark() + " " + api.getMark());
+                        this.Marck.setText(api.getMark() + " " + api.getModel());
                         this.markDB = api.getMark();
+
                         this.modelDB = api.getModel();
+
                         this.imageCar.setImage(new Image(api.getURLImage()));
                         this.urlDB = api.getURLImage();
+
                         this.carYear.setText(api.getYear());
                         this.yearDB = api.getYear();
+
                         this.urlDB = api.getURLImage();
+
                         this.vin.setText("VIN: " + api.getVIN());
                         this.vinDB = api.getVIN();
+
                         this.lastReg.setText("Last registration: " + api.getLastRegistrate());
                         this.lastRegDB = api.getLastRegistrate();
+
                         this.saveInDB.setImage(new Image("file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/save.png"));
                     }
                     else {
@@ -113,7 +119,21 @@ public class SearchForNumberController {
             if(this.IDUser != 0){
                 try {
                     DBController controller = new DBController();
-                    controller.SaveSearchInDB(this.IDUser,this.markDB,this.modelDB,this.yearDB,this.vinDB,this.lastRegDB,this.urlDB);
+                   int cod =  controller.SaveSearchInDB(this.IDUser,this.markDB,this.modelDB,this.yearDB,this.vinDB,this.lastRegDB,this.urlDB);
+                   if(cod > 0){
+                       Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                       alert.setTitle("Information");
+                       alert.setHeaderText(null);
+                       alert.setContentText("Your search result has been saved successfully");
+                       alert.showAndWait();
+                   }
+                   else {
+                       Alert alert = new Alert(Alert.AlertType.ERROR);
+                       alert.setTitle("Error");
+                       alert.setHeaderText(null);
+                       alert.setContentText("Something went wrong");
+                       alert.showAndWait();
+                   }
                 } catch (ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 } catch (SQLException e) {
@@ -121,7 +141,11 @@ public class SearchForNumberController {
                 }
             }
             else {
-                //alert
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Something went wrong. You must be logged in to save your search!");
+                alert.showAndWait();
             }
         });
     }

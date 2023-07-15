@@ -47,8 +47,9 @@ public class DBController {
         }
         return validIdUser;
     }
-    public void SaveSearchInDB(int idUser,String mark,String model, String year, String vin, String lastDate, String url) throws SQLException {
+    public int SaveSearchInDB(int idUser,String mark,String model, String year, String vin, String lastDate, String url) throws SQLException {
         Statement s  = c.createStatement();
         int r = s.executeUpdate("insert into db.SaveCars(id_user, mark, model, year, last_registration, vin, url_photo) values ("+idUser+",'"+ mark+"','"+model+"','"+year+"','"+lastDate+"','"+vin+"','"+url+"')");
+        return r;
     }
 }
