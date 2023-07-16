@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import com.example.carcheck.API.APIController;
 import com.example.carcheck.DataBase.DBController;
-import com.example.carcheck.Models.UserLogin;
+import com.example.carcheck.Storage.UserLogin;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -93,7 +93,6 @@ public class SearchForVINController {
                     this.lastRegDB = api.getLastRegistrate();
 
                     this.saveInDB.setImage(new Image("file:/Users/ilyaschevchenko/Desktop/CarCheck/src/main/source/save.png"));
-
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -102,7 +101,6 @@ public class SearchForVINController {
                     alert.setContentText("Error!");
                     alert.showAndWait();
                 }
-
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -113,9 +111,6 @@ public class SearchForVINController {
             }
         });
         this.saveInDB.setOnMouseClicked(event -> {
-            //
-            //  Save in DB
-            //
             if(UserLogin.getIdUser() != 0){
                 try {
                     DBController controller = new DBController();
@@ -149,9 +144,4 @@ public class SearchForVINController {
             }
         });
     }
-//    @FXML
-//    public void SetIdUser(int id){
-//        this.IDUser = id;
-//    }
-
 }

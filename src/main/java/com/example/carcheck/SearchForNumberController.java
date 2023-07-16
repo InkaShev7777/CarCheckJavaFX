@@ -1,15 +1,17 @@
 package com.example.carcheck;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.carcheck.API.APIController;
 import com.example.carcheck.DataBase.DBController;
-import com.example.carcheck.Models.UserLogin;
+import com.example.carcheck.Storage.UserLogin;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -114,9 +116,6 @@ public class SearchForNumberController {
             }
         });
         this.saveInDB.setOnMouseClicked(event -> {
-            //
-            //  send date in DB
-            //
             if(UserLogin.getIdUser() != 0){
                 try {
                     DBController controller = new DBController();
@@ -149,6 +148,23 @@ public class SearchForNumberController {
                 alert.showAndWait();
             }
         });
+        this.saveButton.setOnMouseClicked(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/com/example/carcheck/save-search-view.fxml"));
+            try{
+                loader.load();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setTitle("Save");
+            stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
     }
     public void ErrorAlert(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -156,10 +172,6 @@ public class SearchForNumberController {
         alert.setHeaderText(null);
         alert.setContentText("Something went wrong. The number should look like this: AE7777EA");
         alert.showAndWait();
-    }
-    @FXML
-    public void SetIdUser(int id){
-        this.IDUser = id;
     }
 
 }

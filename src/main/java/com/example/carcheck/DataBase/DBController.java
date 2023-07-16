@@ -34,10 +34,6 @@ public class DBController {
         }
         s.close();
     }
-
-    //
-    //  public
-    //
     public int Authorize(String login,String password) throws SQLException {
         getAllUser();
         int validIdUser = -1;

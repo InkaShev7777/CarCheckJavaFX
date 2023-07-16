@@ -6,11 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.carcheck.DataBase.DBController;
-import com.example.carcheck.Models.UserLogin;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
+import com.example.carcheck.Storage.UserLogin;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,8 +34,6 @@ public class AuthorizeController {
 
     @FXML
     private Hyperlink SignOutLink;
-    private int idUser;
-    private String Login;
 
     @FXML
     void initialize() {
@@ -51,8 +45,6 @@ public class AuthorizeController {
                    if(idNow!= -1){
                        UserLogin.setIdUser(idNow);
                        UserLogin.setLogin(LoginField.getText());
-//                       idUser = idNow;
-//                       Login = LoginField.getText();
                        this.ConfirmButton.getScene().getWindow().hide();
                    }
                    else {
@@ -63,24 +55,16 @@ public class AuthorizeController {
                } catch (SQLException e) {
                    throw new RuntimeException(e);
                }
-               //
-               // check from DB
-               //
-
            }
            else {
                Alert alert = new Alert(Alert.AlertType.ERROR);
                alert.setTitle("Error");
                alert.setHeaderText(null);
                alert.setContentText("Login or Password is empty!");
-
                alert.showAndWait();
            }
        });
        SignOutLink.setOnAction(actionEvent -> {
-           //
-           // open next registration window
-           //
            FXMLLoader loader = new FXMLLoader();
            loader.setLocation(getClass().getResource("/com/example/carcheck/registration-view.fxml"));
            try{
@@ -96,22 +80,8 @@ public class AuthorizeController {
            stage.setResizable(false);
            stage.setScene(new Scene(root));
            SignOutLink.getScene().getWindow().hide();
-
-//           RegistrationController controller = loader.getController();
-//           this.idUser = controller.getIDUser();
-//           this.Login = controller.getLogin();
            stage.show();
-//           stage.showAndWait();
        });
     }
-//    @FXML
-//    public int getIdUser(){
-//        return  this.idUser;
-//    }
-//    @FXML
-//    public String getLogin(){
-//        return  this.Login;
-//    }
-
 }
 

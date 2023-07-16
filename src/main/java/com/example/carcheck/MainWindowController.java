@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.example.carcheck.Models.UserLogin;
+import com.example.carcheck.Storage.UserLogin;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,10 +30,6 @@ public class MainWindowController {
     private ImageView search_for_vin;
     @FXML
     private ImageView user_button;
-    @FXML
-    private int idUser;
-    @FXML
-    private String Login;
 
     @FXML
     void initialize() {

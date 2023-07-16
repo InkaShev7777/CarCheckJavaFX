@@ -1,4 +1,4 @@
-package com.example.carcheck.Models;
+package com.example.carcheck.Storage;
 
 public class UserLogin {
     private static int idUser = 0;

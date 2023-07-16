@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.example.carcheck.DataBase.DBController;
-import com.example.carcheck.Models.UserLogin;
+import com.example.carcheck.Storage.UserLogin;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -31,8 +31,6 @@ public class RegistrationController {
 
     @FXML
     private Hyperlink backButton;
-    private int IDUser;
-    private  String Login;
 
     @FXML
     void initialize() {
@@ -60,7 +58,6 @@ public class RegistrationController {
                         }
                     }
                     else {
-                        // not confirm pass
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Error");
                         alert.setHeaderText(null);
@@ -69,7 +66,6 @@ public class RegistrationController {
                     }
                 }
                 else {
-                    // field
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
@@ -83,13 +79,5 @@ public class RegistrationController {
             }
         });
     }
-//    @FXML
-//    public int getIDUser(){
-//        return this.IDUser;
-//    }
-//
-//    public String getLogin() {
-//        return Login;
-//    }
 }
 
