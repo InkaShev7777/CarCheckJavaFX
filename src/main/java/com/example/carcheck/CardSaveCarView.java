@@ -50,7 +50,7 @@ public class CardSaveCarView {
     public void setVin(String vin) {
         this.vin.setText(vin);
     }
-@FXML
+    @FXML
     public void setYear(String  year) {
         this.year.setText(year);
     }

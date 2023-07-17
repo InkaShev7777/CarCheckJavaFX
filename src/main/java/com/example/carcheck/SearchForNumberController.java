@@ -149,21 +149,29 @@ public class SearchForNumberController {
             }
         });
         this.saveButton.setOnMouseClicked(event -> {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/com/example/carcheck/save-search-view.fxml"));
-            try{
-                loader.load();
+            if(UserLogin.getIdUser() != 0){
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/com/example/carcheck/save-search-view.fxml"));
+                try{
+                    loader.load();
+                }
+                catch (IOException e){
+                    e.printStackTrace();
+                }
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setTitle("Save");
+                stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
+                stage.setResizable(false);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
             }
-            catch (IOException e){
-                e.printStackTrace();
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("You must be logged in to view saved searches!");
+                alert.show();
             }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setTitle("Save");
-            stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
         });
     }
     public void ErrorAlert(){

@@ -1,5 +1,6 @@
 package com.example.carcheck.DataBase;
 
+import com.example.carcheck.Models.Car;
 import com.example.carcheck.Models.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -60,6 +61,25 @@ public class DBController {
     public int RegistrateUser(String login, String password) throws SQLException {
         Statement s  = c.createStatement();
         int r = s.executeUpdate("insert into db.User(login, password, id_role) values('"+login+"','"+password+"',1)");
+        return r;
+    }
+    public List<Car> getListCars(int id) throws SQLException {
+        List<Car> carList = new ArrayList<Car>();
+        Statement s = c.createStatement();
+        ResultSet r = s.executeQuery("SELECT * FROM db.SaveCars");
+        while (r.next()){
+            int id_user = Integer.parseInt(r.getString("id_user"));
+            int _id = Integer.parseInt(r.getString("id"));
+            if(id_user == id){
+                Car car = new Car(_id,id_user,r.getString("mark"),r.getString("model"),r.getString("year"),r.getString("last_registration"),r.getString("vin"),r.getString("url_photo"));
+                carList.add(car);
+            }
+        }
+        return carList;
+    }
+    public int DeleteCar(int id) throws SQLException {
+        Statement s  = c.createStatement();
+        int r = s.executeUpdate("DELETE FROM db.SaveCars WHERE id =" + id);
         return r;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.carcheck;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -8,6 +9,9 @@ import com.example.carcheck.API.APIController;
 import com.example.carcheck.DataBase.DBController;
 import com.example.carcheck.Storage.UserLogin;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -141,6 +145,31 @@ public class SearchForVINController {
                 alert.setHeaderText(null);
                 alert.setContentText("Something went wrong. You must be logged in to save your search!");
                 alert.showAndWait();
+            }
+        });
+        this.saveButton.setOnMouseClicked(event -> {
+            if(UserLogin.getIdUser() != 0){
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/com/example/carcheck/save-search-view.fxml"));
+                try{
+                    loader.load();
+                }
+                catch (IOException e){
+                    e.printStackTrace();
+                }
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setTitle("Save");
+                stage.getIcons().add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJipxz2_UpZiqiafROnoyOwugGtvMJ7jj_lg&usqp=CAU"));
+                stage.setResizable(false);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("You must be logged in to view saved searches!");
+                alert.show();
             }
         });
     }
